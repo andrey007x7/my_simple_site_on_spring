@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog</title>
+    <style>
+        .center {
+            width: 60%; /* Ширина элемента в пикселах */
+            margin: auto; /* Выравниваем по центру */
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="center">
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container mt-5">
+        <h1>Чатик</h1>
+            <div class="p-5 mb-0 bg-light rounded-1">
+                <div th:each="el : ${chat}">
+                    <p th:text="${el.name} + ': ' + ${el.message}"> </p>
+                </div>
+            </div>
+        <form action="/chat" method="post">
+            <input type="text" name="name" placeholder="Enter your name" class="form-control mb-2">
+            <input type="text" name="message" placeholder="Enter your message" class="form-control mb-2">
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
+    </div>
+    <footer th:insert="blocks/footer :: footer"></footer>
+</div>
+</body>
+</html>

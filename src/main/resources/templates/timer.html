@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog</title>
+    <style>
+        .center {
+            width: 60%; /* Ширина элемента в пикселах */
+            margin: auto; /* Выравниваем по центру */
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="center">
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container mt-5">
+        <h1>Timer</h1>
+        <div class="p-5 mb-0 bg-light rounded-1">
+            <div th:each="el : ${timer}">
+                <p class="d-inline" th:text="${el.time} + '  '"> </p><button class="d-inline" type="submit"> delete </button>
+            </div>
+        </div>
+        <form action="/timer" method="post">
+            <input type="text" name="time" placeholder="Enter time in format " class="form-control mb-2">
+            <button type="submit" class="btn btn-success">Set</button>
+        </form>
+    </div>
+    <footer th:insert="blocks/footer :: footer"></footer>
+</div>
+</body>
+</html>
